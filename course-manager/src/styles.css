@@ -1,0 +1,12 @@
+/* You can add global styles to this file, and also import other style files */
+/*
+    Definir o bootstrap como layout global: todas
+    as classes de css do bootstrap serão replicadas nos componentes.
+    Importar bootstrap depois de instalado.
+*/
+@import "~bootstrap/dist/css/bootstrap.min.css";
+
+/*
+    Font-awesome global para as estrelas de avaliação do curso.
+*/
+@import "~font-awesome/css/font-awesome.min.css";

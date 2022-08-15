@@ -1,0 +1,48 @@
+<h2 class="display-1">Course List</h2>
+
+<!-- Para filtrar dinamicamente os cursos a medida em que for digitando -->
+<section class="form-group row">
+    <label class="col-sm-2 col-form-label">Filter by:</label>
+
+    <section class="col-sm-10">
+        <!-- Valor do atributo que queremos linkar ao componente. -->
+        <input [(ngModel)]="filter" class="form-control">
+    </section>
+</section>
+
+<table class="table table-striped">
+    <thead>
+        <tr>
+            <th>Image</th>
+            <th>Name</th>
+            <th>Price</th>
+            <th>Code</th>
+            <th>Release Date</th>
+            <th>Rating</th>
+            <th>Options</th>
+        </tr>
+    </thead>
+
+    <tbody>
+        <!-- Iterar sobre os cursos: repetir linha a linha: Sintaxe do Angular *ngFor="let course of courses" let que vai representar cada iteração do curso. -->
+        <!-- filteredCourses vai filtrar cada curso a medida que for digitado. -->
+        <tr *ngFor="let course of filteredCourses">
+            <td><img [src]="course.imageUrl" alt="#" width="40" height="40"></td>
+            <td>{{ course.name }}</td>
+            <td>{{ course.price | currency}}</td>
+            <!-- Pipes padrões do Angular, mas eu posso criar um pipe. -->
+            <td>{{ course.code | lowercase | replace: "-": " " }}</td>
+            <!-- Utilizando pipes (| nome-do-pipe: "algum-padrão" -->
+            <td>{{ course.releaseDate | date: "dd/MM/yyyy" }}</td>
+            <td>
+                <app-star [rating]="course.rating"></app-star>
+            </td>
+            <td>
+                <!-- Ativando rotas para acessar componentes -->
+                <!-- Precisamos criar uma component que corresponda a rota /courses/info/id -->
+                <a [routerLink]="['/courses/info', course.id]" class="btn btn-primary m-2">Edit</a>
+                <button (click)="deleteById(course.id)" class="btn btn-danger">Delete</button>
+            </td>
+        </tr>
+    </tbody>
+</table>

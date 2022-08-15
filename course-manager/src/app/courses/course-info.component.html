@@ -1,0 +1,62 @@
+<h2 class="display-1">Course Info</h2>
+
+<hr>
+
+<!-- Criação de variáveis de template #courseForm -->
+<form #courseForm="ngForm" *ngIf="course"> <!-- Só abre o formulário caso, tenha infos -->
+    <section class="form-group row my-2">
+        <label class="col-sm-2 col-form-label">Name:</label>
+
+        <section class="col-sm-10">
+            <!-- Valor do atributo que queremos linkar ao componente. ngClass = classe dinâmica -->
+            <input [(ngModel)]="course.name" required name="name" #courseName="ngModel" [ngClass]="{'is-invalid': courseName.invalid}" class="form-control">
+
+            <section class="invalid-feedback">
+                <span>Course name is required.</span>
+            </section>
+        </section>
+    </section>
+
+    <section class="form-group row my-2">
+        <label class="col-sm-2 col-form-label">Price:</label>
+
+        <section class="col-sm-10">
+            <!-- Valor do atributo que queremos linkar ao componente. ngClass = classe dinâmica -->
+            <input [(ngModel)]="course.price" required name="price" #coursePrice="ngModel" type="number" [ngClass]="{'is-invalid': coursePrice.invalid}" class="form-control">
+
+            <section class="invalid-feedback">
+                <span>Course price is required.</span>
+            </section>
+        </section>
+    </section>
+
+    <section class="form-group row my-2">
+        <label class="col-sm-2 col-form-label">Rating:</label>
+
+        <section class="col-sm-10">
+            <!-- Valor do atributo que queremos linkar ao componente. ngClass = classe dinâmica -->
+            <input [(ngModel)]="course.rating" required name="rating" #courseRating="ngModel" type="number" [ngClass]="{'is-invalid': courseRating.invalid}" class="form-control">
+
+            <section class="invalid-feedback">
+                <span>Course rating is required.</span>
+            </section>
+        </section>
+    </section>
+
+    <section class="form-group row my-2">
+        <label class="col-sm-2 col-form-label">Description:</label>
+
+        <section class="col-sm-10">
+            <!-- Valor do atributo que queremos linkar ao componente. ngClass = classe dinâmica -->
+            <textarea [(ngModel)]="course.description" required name="description" #courseDescription="ngModel" [ngClass]="{'is-invalid': courseDescription.invalid}" class="form-control"></textarea>
+
+            <section class="invalid-feedback">
+                <span>Course description is required.</span>
+            </section>
+        </section>
+    </section>
+
+    <!-- Vai desabilitar o botão se algo no formulário estiver em branco -->
+    <button [disabled]="courseForm.invalid" (click)="save()" type="button" class="btn btn-success mx-2 my-2">Save</button>
+    <button [routerLink]="['/courses']" type="button" class="btn btn-outline-secondary mx-2 my-2">Back</button>
+</form>

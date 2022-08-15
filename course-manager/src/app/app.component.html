@@ -1,0 +1,29 @@
+<!-- Praticar Interpolação -->
+
+<!-- Propriedade title do AppComponent -->
+<!-- {{ title }} -->
+
+<!-- <br> -->
+
+<!-- {{name}} -->
+
+<!-- <br> -->
+
+<!-- Só vai exibir a propriedade -->
+<!-- <input [ngModel]="name" name="name"> -->
+
+<!-- <br> -->
+
+<!-- Exibe altera o valor da propriedade no site todo -->
+<!-- <input [(ngModel)]="name" name="nome"> -->
+
+<app-nav-bar></app-nav-bar>
+<!-- Bootstrap centraliza com a class container -->
+<section class="container mt-4">
+  <!-- <app-course-list></app-course-list> -->
+  <!-- 
+    Avisar para o Angular que queremos fazer o switch aqui.
+    Caminho de rotas. Trabalhando com rotas e não tags. Local da troca de componentes.
+  -->
+  <router-outlet></router-outlet>
+</section>
